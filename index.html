@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Wedding</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #faf7f5;
+      color: #333;
+    }
+
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/WeddingCover.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+    }
+
+    section:nth-child(even) {
+      background: rgba(219, 163, 177, 0.08);
+    }
+
+    #countdown {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      background: #DBA3B1;
+      color: #450011;
+      font-weight: 500;
+      margin-top: 1.5rem;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 2px;
+      background: #DBA3B1;
+      margin: 3rem auto;
+      border-radius: 2px;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #DBA3B1;
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #450011;
+
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .details.tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    #countdown {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .gallery img {
+      transition: transform 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      background: #450011;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tiles {
+      margin-top: 3rem;
+    }
+
+    .tile {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+      color: #450011;
+      box-shadow: 0 10px 30px rgba(69, 0, 17, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 2px solid transparent;
+    }
+
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(69, 0, 17, 0.18);
+      border-color: #DBA3B1;
+    }
+
+    .tile h3 {
+      margin-top: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .tile p {
+      color: #666;
+    }
+
+    .tile:active,
+    .tile:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(69, 0, 17, 0.18);
+      border-color: #DBA3B1;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto;
+      background: #DBA3B1;
+      color: #450011;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    @keyframes elegantReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+        letter-spacing: 6px;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 2px;
+      }
+    }
+
+    .header-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+    }
+
+    .name {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: nameReveal 1.4s ease-out forwards;
+    }
+
+    .vab {
+      animation-delay: 0.3s;
+    }
+
+    .beth {
+      animation-delay: 0.9s;
+    }
+
+    .amp {
+      opacity: 0;
+      animation: ampReveal 0.6s ease-out forwards;
+      animation-delay: 0.7s;
+    }
+
+    @keyframes nameReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes ampReveal {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <h1 class="header-names">
+        <span class="name vab">Vab</span>
+        <span class="amp">&nbsp;&amp;&nbsp;</span>
+        <span class="name beth">Beth</span>
+      </h1>
+
+      <p>ARE GETTING MARRIED IN</p>
+      <div id="countdown"></div>
+      <p>March 12, 2027 • Silooet House</p>
+    </div>
+  </header>
+
+  <section>
+    <h2>Our Story</h2>
+    <p>From a simple hello to forever together. We can’t wait to celebrate with you.</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section>
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="images/gallery1.jpeg" />
+      <img src="images/gallery2.jpeg" />
+      <img src="images/gallery3.jpg" />
+      <img src="images/gallery4.jpeg" />
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+
+  <section>
+    <h2>Wedding Details</h2>
+
+    <div class="details tiles">
+      <a href="ceremony.html" class="tile">
+        <div class="icon">⛪</div>
+        <h3>Ceremony & Address</h3>
+        <p>Location & directions</p>
+      </a>
+
+      <a href="schedule.html" class="tile">
+        <div class="icon">🕰️</div>
+        <h3>Schedule</h3>
+        <p>Timeline of the day</p>
+      </a>
+
+      <a href="rsvp.html" class="tile">
+        <div class="icon">💌</div>
+        <h3>RSVP</h3>
+        <p>Confirm your attendance</p>
+
+        <a href="recommendations.html" class="tile">
+          <div class="icon">🏨</div>
+          <h3>Where to stay</h3>
+          <p>Hotel recommendations</p>
+        </a>
+    </div>
+  </section>
+
+  </a>
+  </div>
+  </section>
+
+
+
+
+
+
+  <footer>
+    <p>With love, Vab & Beth</p>
+  </footer>
+
+  <script>
+    const weddingDate = new Date("March 12, 2027 17:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "Today is the big day! 💍";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      countdownEl.innerHTML = `${days} Days`;
+    }
+
+    // Run immediately (fixes the delay)
+    updateCountdown();
+
+    // Then keep updating
+    setInterval(updateCountdown, 60000); // once per minute is enough
+  </script>
+
+
+</body>
+
+</html>

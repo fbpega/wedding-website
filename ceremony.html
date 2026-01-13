@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceremony</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #faf7f5;
+            color: #333;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color:#DBA3B1;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .tile {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            color: #450011;
+            box-shadow: 0 10px 30px rgba(69, 0, 17, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 2px solid transparent;
+        }
+
+        .tile:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(69, 0, 17, 0.18);
+            border-color: #DBA3B1;
+        }
+
+        .tile:active,
+        .tile:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(69, 0, 17, 0.18);
+            border-color: #DBA3B1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ceremony & Address</h1>
+    <p>Silooet House</p>
+    <p>March 12, 2027 • 4:30 PM</p>
+    <p>Address: 55/21 Sao Thong Hin, Bang Yai District, NonThaburi 11140, Thailand</p>
+    <p>We can’t wait to celebrate with you here!</p>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.5482542008976!2d100.4169501!3d13.866133699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e291673c9d491b%3A0x977bd39a48af9484!2sSilooet%20House!5e0!3m2!1sen!2sph!4v1767929972684!5m2!1sen!2sph"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <p><a href="https://maps.app.goo.gl/WB3PmaT7iy5vMXPf9" target="_blank" class="tile">Open in Google Maps</a></p>
+
+    <a href="index.html">← Back to Home</a>
+
+</body>
+
+</html>
