@@ -18,7 +18,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            color:#DBA3B1;
+            color: #DBA3B1;
         }
 
         a {
@@ -32,6 +32,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 1rem;
+            color:#DBA3B1
         }
 
         .center-image {
@@ -41,13 +42,71 @@
             /* adjust size */
             width: 100%;
         }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 0 auto 1.2rem;
+            line-height: 1.7;
+            color: #450011
+        }
+
+        .stay-types {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .stay-item {
+            background: #fff;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(69, 0, 17, 0.1);
+            font-family: 'Playfair Display', serif;
+            color: #450011;
+        }
+
+        .note {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: #777;
+            font-style: italic;
+        }
     </style>
 </head>
 
+<section>
+    <h2>Where to Stay</h2>
 
-<h1>Where to Stay</h1>
+    <p class="intro-text">
+        Don’t fancy the journey back to central Bangkok after a night of celebrating?
+        We’ve included a small selection of hotel recommendations close to the venue
+        for guests who’d prefer a convenient nearby stay.
+    </p>
 
-<p> Work in progress.. </p>
+    <p class="intro-text">
+        If you do choose to stay near the venue, we’d suggest booking just a night or two —
+        there’s so much more to see and do in central Bangkok.
+    </p>
+
+    <p class="intro-text">
+        For guests staying centrally, we’re planning to arrange return transport back
+        into the city after the celebrations. Let us know if you plan to stay in the city
+        so we can share transport information closer to the day.
+    </p>
+
+    <div class="section-divider"></div>
+
+    <div class="stay-types">
+        <div class="stay-item">✨ Relaxed & Practical Stays</div>
+        <div class="stay-item">✨ Stylish & Comfortable Stays</div>
+        <div class="stay-item">✨ Boutique & Spacious Stays</div>
+    </div>
+
+    <p class="note">
+        All hotels listed are suggestions only — please stay wherever suits you best!
+    </p>
+</section>
 
 <a href="index.html">← Back to Home</a>
 
