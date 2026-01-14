@@ -7,7 +7,7 @@
     <title>Ceremony</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
     <style>
-        body {
+           body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background: #faf7f5;
@@ -32,7 +32,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 1rem;
-            color:#DBA3B1
+            color: #DBA3B1
         }
 
         .center-image {
@@ -72,29 +72,60 @@
             color: #777;
             font-style: italic;
         }
+
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            background: #DBA3B1;
+            margin: 3rem auto;
+            border-radius: 2px;
+        }
+
+        .section-divider2 {
+            margin: 3rem auto;
+
+        }
+
+        .footer-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            width: 150px;
+            max-width: 60%;
+            height: 8%;
+        }
+
+        @media (max-width: 700px) {
+            .footer-logo {
+                width: 120px;
+                height: 8%;
+            }
+        }
     </style>
 </head>
 
 <section>
+
     <h2>Where to Stay</h2>
 
-    <p class="intro-text">
-        Don’t fancy the journey back to central Bangkok after a night of celebrating?
-        We’ve included a small selection of hotel recommendations close to the venue
-        for guests who’d prefer a convenient nearby stay.
-    </p>
+    <div class="section-divider2"></div>
 
-    <p class="intro-text">
-        If you do choose to stay near the venue, we’d suggest booking just a night or two —
-        there’s so much more to see and do in central Bangkok.
-    </p>
+    <body>
+        <p class="intro-text">
+            Don’t fancy the journey back to central Bangkok after a night of celebrating?
+            We’ve included a small selection of hotel recommendations close to the venue
+            for guests who’d prefer a convenient nearby stay.
+        </p>
 
-    <p class="intro-text">
-        For guests staying centrally, we’re planning to arrange return transport back
-        into the city after the celebrations. Let us know if you plan to stay in the city
-        so we can share transport information closer to the day.
-    </p>
 
+        <p class="intro-text">
+            If you do choose to stay near the venue, we’d suggest booking just a night or two —
+            there’s so much more to see and do in central Bangkok.
+        </p>
+
+    </body>
     <div class="section-divider"></div>
 
     <div class="stay-types">
@@ -102,6 +133,12 @@
         <div class="stay-item">✨ Stylish & Comfortable Stays</div>
         <div class="stay-item">✨ Boutique & Spacious Stays</div>
     </div>
+
+    <p class="intro-text">
+        For guests staying centrally, we’re planning to arrange return transport back
+        into the city after the celebrations. Let us know if you plan to stay in the city
+        so we can share transport information closer to the day.
+    </p>
 
     <p class="note">
         All hotels listed are suggestions only — please stay wherever suits you best!
@@ -111,5 +148,8 @@
 <a href="index.html">← Back to Home</a>
 
 </body>
+<p>
+    <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+</p>
 
 </html>

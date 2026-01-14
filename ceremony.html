@@ -18,7 +18,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            color:#DBA3B1;
+            color: #DBA3B1;
         }
 
         a {
@@ -27,6 +27,14 @@
             text-decoration: none;
             color: #555;
         }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #DBA3B1
+        }
+
 
         .map-container {
             margin-top: 2rem;
@@ -69,6 +77,35 @@
             box-shadow: 0 14px 32px rgba(69, 0, 17, 0.18);
             border-color: #DBA3B1;
         }
+
+        .dress-text {
+            max-width: 720px;
+            margin: 0 auto 1.2rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        .footer-logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            width: 150px;
+            max-width: 60%;
+            height: 8%;
+        }
+
+        @media (max-width: 700px) {
+            .footer-logo {
+                width: 120px;
+                height: 8%;
+            }
+        }
     </style>
 </head>
 
@@ -78,6 +115,7 @@
     <p>Silooet House</p>
     <p>March 12, 2027 • 4:30 PM</p>
     <p>Address: 55/21 Sao Thong Hin, Bang Yai District, NonThaburi 11140, Thailand</p>
+
     <p>We can’t wait to celebrate with you here!</p>
 
     <div class="map-container">
@@ -92,5 +130,12 @@
     <a href="index.html">← Back to Home</a>
 
 </body>
+
+<footer>
+
+    <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+
+</footer>
+
 
 </html>

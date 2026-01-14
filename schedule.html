@@ -7,7 +7,7 @@
     <title>Ceremony</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
     <style>
-        body {
+       body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background: #faf7f5;
@@ -18,7 +18,7 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            color:#DBA3B1;
+            color: #DBA3B1;
         }
 
         a {
@@ -32,24 +32,53 @@
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 1rem;
+            color: #DBA3B1
         }
+
 
         .center-image {
             display: block;
             margin: 2rem auto;
             max-width: 500px;
-            /* adjust size */
             width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 140px;
+            width: 35vw;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .footer-logo {
+                max-width: 110px;
+            }
         }
     </style>
 </head>
 
 
-<h1>Wedding Timeline</h1>
-<img src="images/timeline.png" class="center-image" />
+<body>
 
-<a href="index.html">← Back to Home</a>
+    <h1>Wedding Timeline</h1>
+
+    <img src="images/timeline.png" class="center-image" />
+
+    <a href="index.html">← Back to Home</a>
 
 </body>
+
+<footer>
+    <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+</footer>
+
 
 </html>

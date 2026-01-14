@@ -9,7 +9,6 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
-    
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -47,7 +46,7 @@
       width: 80px;
       height: 2px;
       background: #DBA3B1;
-      margin: 3rem auto;
+      margin: 2rem auto;
       border-radius: 2px;
     }
 
@@ -61,7 +60,7 @@
     h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       color: #DBA3B1;
     }
 
@@ -70,6 +69,12 @@
       font-size: 1rem;
       margin-bottom: 1rem;
       color: #450011;
+
+    }
+
+    .h3-dresscode {
+
+      font-size: 1.2rem;
 
     }
 
@@ -106,7 +111,7 @@
     }
 
     #countdown {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-top: 1rem;
       font-weight: 500;
     }
@@ -133,11 +138,21 @@
       transform: scale(1.03);
     }
 
+    /*
     footer {
       background: #450011;
       color: #fff;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 0.1rem 0.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    */
+    .footer {
+      color: #450011;
+      text-align: center;
+      padding: 0.1rem 0.5rem;
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       margin-bottom: 0.5rem;
@@ -209,7 +224,8 @@
 
     .header-names {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 2.5rem;
+      margin-top: 0.1rem;
     }
 
     .name {
@@ -256,28 +272,108 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .details-block {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(69, 0, 17, 0.15);
+      text-align: center;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+
+    .footer-logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      width: 150px;
+      max-width: 60%;
+      height: 8%;
+    }
+
+    @media (max-width: 700px) {
+      .footer-logo {
+        width: 120px;
+        height: 8%;
+      }
+    }
+
+    .header-logo {
+      max-width: 140px;
+      width: 35vw;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+      margin-bottom: 0.1rem;
+      text-align: center;
+
+
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+      animation: logoReveal 1.4s ease-out forwards;
+      animation-delay: 0.3s;
+
+    }
+
+    @keyframes logoReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
   </style>
+
 </head>
 
 <body>
 
   <header>
     <div>
+
+      <img src="images/logo-white.png" class="header-logo" alt="Vab & Beth logo" />
+
       <h1 class="header-names">
+        <span>Vab</span>
+        <span>&nbsp;&amp;&nbsp;</span>
+        <span">Beth</span>
+
+      </h1>
+
+      <!--<h1 class="header-names">
         <span class="name vab">Vab</span>
         <span class="amp">&nbsp;&amp;&nbsp;</span>
         <span class="name beth">Beth</span>
-      </h1>
+      </h1> -->
 
       <p>ARE GETTING MARRIED IN</p>
       <div id="countdown"></div>
-      <p>March 12, 2027 • Silooet House</p>
+      <p>March 12, 2027 • Silooet House, Bangkok</p>
     </div>
   </header>
 
   <section>
     <h2>Our Story</h2>
-    <p>From a simple hello to forever together. We can’t wait to celebrate with you.</p>
+
+    <p>Our story began with a swipe and a walk through Benjakitti Park — a first date filled with easy conversation and
+      good food. We left that day deciding to be friends, unaware it was only the beginning.
+
+    <p>A few weeks later, during the Bangkok earthquake, life had other plans. What started as checking in turned into
+      something much more, and everything began to fall into place. Even when distance separated us while Beth was in
+      Europe handling visa matters, our connection only grew stronger.</p>
+
+    <p>We reunited the day after her return and have been inseparable ever since — from surprise visits (including a
+      special one in Vietnam) to building a life that felt right from the start.</p>
+
+    <p> On the 2nd of January, our forever began with a simple question and a very happy yes.</p>
+
   </section>
 
   <div class="section-divider"></div>
@@ -294,9 +390,17 @@
 
   <div class="section-divider"></div>
 
-
   <section>
     <h2>Wedding Details</h2>
+
+    <div class="details-block">
+
+      <h3 class="h3-dresscode">Dress Code</h3>
+      <p>
+        We'll be celebrating in formal style.</p>
+      <p> We ask with love that guests reserve the colour burgundy for our bridesmaids (and white for the Bride).</p>
+
+    </div>
 
     <div class="details tiles">
       <a href="ceremony.html" class="tile">
@@ -324,39 +428,31 @@
     </div>
   </section>
 
+
   </a>
   </div>
   </section>
-
-  <footer>
-    <p>With love, Vab & Beth</p>
-  </footer>
-
-  <script>
-    const weddingDate = new Date("March 12, 2027 17:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-
-      if (diff <= 0) {
-        countdownEl.innerHTML = "Today is the big day! 💍";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      countdownEl.innerHTML = `${days} Days`;
-    }
-
-    // Run immediately (fixes the delay)
-    updateCountdown();
-
-    // Then keep updating
-    setInterval(updateCountdown, 60000); // once per minute is enough
-  </script>
-
-
 </body>
+
+<footer>
+
+  <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+
+</footer>
+
+
+
+<script>
+  const weddingDate = new Date(" March 12, 2027 17:00:00").getTime(); const
+    countdownEl = document.getElementById("countdown"); function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now; if (diff <= 0) { countdownEl.innerHTML = "Today is the big day! 💍"; return; } const
+        days = Math.floor(diff / (1000 * 60 * 60 * 24)); countdownEl.innerHTML = `${days} Days`;
+    } updateCountdown();
+  setInterval(updateCountdown, 60000); 
+</script>
+
+
+
 
 </html>
