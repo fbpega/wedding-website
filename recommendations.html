@@ -7,7 +7,7 @@
     <title>Ceremony</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
     <style>
-           body {
+        body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background: #faf7f5;
@@ -103,6 +103,74 @@
                 height: 8%;
             }
         }
+
+        .hotel-category {
+            max-width: 900px;
+            margin: 3rem auto;
+            text-align: left;
+        }
+
+        .hotel-category h3 {
+            font-family: 'Playfair Display', serif;
+            color: #450011;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .hotel-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(69, 0, 17, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .hotel-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            padding: 1.2rem 1.4rem;
+        }
+
+        .hotel-info a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #450011;
+            text-decoration: none;
+        }
+
+        .hotel-info a:hover {
+            text-decoration: underline;
+        }
+
+        .hotel-info p {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        @media (max-width: 700px) {
+            .hotel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hotel-card img {
+                height: 180px;
+            }
+        }
     </style>
 </head>
 
@@ -129,15 +197,86 @@
     <div class="section-divider"></div>
 
     <div class="stay-types">
+
         <div class="stay-item">✨ Relaxed & Practical Stays</div>
+
+        <div class="hotel-grid">
+            <a href="https://www.booking.com/hotel/th/fine-bed.html?ssne=Nonthaburi&ssne_untouched=Nonthaburi&highlighted_hotels=4424900&ss=Nonthaburi&dest_id=-3252231&dest_type=city&hp_avform=1&origin=hp&do_availability_check=1&label=fine-bed-ZpaPgpGmSUDg2lucfkcO1AS468625100767%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-553332986545%3Alp9199081%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXORK0YJiVoOxcWODxYDaAA&sid=ab269f67f6ac51f13186c82b0c33e8ac&aid=311984&lang=en-gb&sb=1&src_elem=sb&src=hotel&checkin=2027-03-12&checkout=2027-03-13&group_adults=2&no_rooms=1&group_children=0#availability_target"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel1.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>Fine Bed Hotel</h4>
+                    <p>Comfortable, convenient, and close to the venue.</p>
+                </div>
+
+            </a>
+
+            <a href="https://www.booking.com/hotel/th/riski-residence-bangbuathong.en-gb.html?label=bed-by-boat-fXVX8RJo6wI97keqPmMTIgS267188366841%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-2320833167903%3Alp9199081%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXORK0YJiVoOxcWODxYDaAA&sid=ab269f67f6ac51f13186c82b0c33e8ac&aid=311984&ucfs=1&checkin=2027-03-12&checkout=2027-03-13&dest_id=-3252231&dest_type=city&group_adults=2&no_rooms=1&group_children=0&srpvid=d308bf4964ef95e775bb998431bc8641&srepoch=1768367775&matching_block_id=337448301_425085980_2_0_0&atlas_src=sr_iw_title#map_closed"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel2.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>Riski Residence Bangbuathong</h4>
+                    <p>Great value with easy transport access.</p>
+                </div>
+            </a>
+        </div>
+
+
         <div class="stay-item">✨ Stylish & Comfortable Stays</div>
+
+        <div class="hotel-grid">
+            <a href="https://www.booking.com/hotel/th/lux-boutique.html?ssne=Nonthaburi&ssne_untouched=Nonthaburi&highlighted_hotels=6660867&ss=Nonthaburi&dest_id=-3252231&dest_type=city&hp_avform=1&origin=hp&do_availability_check=1&label=English_Thailand_EN_TH_28546570825-SWzOv9yXeUYn3SnsZh5B6AS637942151756%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atidsa-209720617945%3Alp9199081%3Ali%3Adec%3Adm%3Aag28546570825%3Acmp340122385&sid=ab269f67f6ac51f13186c82b0c33e8ac&aid=318615&lang=en-gb&sb=1&src_elem=sb&src=hotel&checkin=2027-03-12&checkout=2027-03-13&group_adults=2&no_rooms=1&group_children=0#availability_target"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel3.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>Lux Boutique Hotel</h4>
+                    <p>Comfortable, convenient, and close to the venue.</p>
+                </div>
+
+            </a>
+
+            <a href="https://www.booking.com/hotel/th/thaihome-resort.en-gb.html?aid=318615&label=English_Thailand_EN_TH_28546570825-SWzOv9yXeUYn3SnsZh5B6AS637942151756%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55658553240%3Atidsa-209720617945%3Alp9199081%3Ali%3Adec%3Adm%3Aag28546570825%3Acmp340122385&sid=ab269f67f6ac51f13186c82b0c33e8ac&checkin=2027-03-12&checkout=2027-03-13&dest_id=-3232909&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&soh=1&sr_order=popularity&srepoch=1768368410&srpvid=9cb3a77f2156e5ca2b5f352dc0e0fb95&type=total&ucfs=1&#no_availability_msg"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel4.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>Thaihome Resort</h4>
+                    <p>Great value with easy transport access.</p>
+                </div>
+            </a>
+        </div>
+
+
+
         <div class="stay-item">✨ Boutique & Spacious Stays</div>
+
+
+        <div class="hotel-grid">
+            <a href="https://www.booking.com/hotel/th/salaya-one-amp-service-apartment.en-gb.html?aid=311984&label=salaya-one-amp-service-apartment-jxkZ_bfHMZUqUXAhkVlcnwS704402035422%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-2294831954113%3Alp9199081%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YbSsBl3MCvHsD8UKUHIRFxY&sid=ab269f67f6ac51f13186c82b0c33e8ac&checkin=2027-03-12&checkout=2027-03-13&dest_id=900050596&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&soh=1&sr_order=popularity&srepoch=1768368650&srpvid=a53d2d5f22b485438883dc1e2e0fd108&type=total&ucfs=1&#no_availability_msg"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel5.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>Salaya One Hotel & Serviced Apartments</h4>
+                    <p>Comfortable, convenient, and close to the venue.</p>
+                </div>
+
+            </a>
+
+            <a href="https://www.booking.com/hotel/th/s-d-avenue.en-gb.html?label=riverine-place-riverside-serviced-apartment-0HH08GfFxK0OZcc8QuFoNwS466316236037%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-898677718477%3Alp9199081%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXORK0YJiVoOxcWODxYDaAA&sid=ab269f67f6ac51f13186c82b0c33e8ac&gclid=CjwKCAiA95fLBhBPEiwATXUsxGXpwWHlPkJiBQ4Y58YZOcDuben2hptZmkoRC3139z8fQiSzDKlJ8xoCD14QAvD_BwE&aid=311984&ucfs=1&checkin=2027-03-12&checkout=2027-03-13&group_adults=2&no_rooms=1&group_children=0&srpvid=694a2822820c0129&srepoch=1768369406&matching_block_id=40493813_424175248_2_1_0&atlas_src=hp_iw_title#map_closed"
+                target="_blank" class="hotel-card">
+                <img src="images/hotel6.png" alt="Hotel name">
+                <div class="hotel-info">
+                    <h4>S.D. Avenue Hotel</h4>
+                    <p>Great value with easy transport access.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
     </div>
 
     <p class="intro-text">
-        For guests staying centrally, we’re planning to arrange return transport back
-        into the city after the celebrations. Let us know if you plan to stay in the city
-        so we can share transport information closer to the day.
+        For guests staying in Central Bangkok, we’re planning to arrange return transport after the celebrations. If
+        this applies to you, please let us know so we can share information closer to the day.
     </p>
 
     <p class="note">
