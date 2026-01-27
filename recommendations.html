@@ -171,6 +171,30 @@
                 height: 180px;
             }
         }
+
+        .tile {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            color: #450011;
+            box-shadow: 0 10px 30px rgba(69, 0, 17, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 2px solid transparent;
+        }
+
+        .tile:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(69, 0, 17, 0.18);
+            border-color: #DBA3B1;
+        }
+
+        .tile:active,
+        .tile:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(69, 0, 17, 0.18);
+            border-color: #DBA3B1;
+        }
     </style>
 </head>
 
@@ -192,7 +216,8 @@
 
         </p></strong>
 
-        <p class="intro-text">There’s so much more to see and do in central Bangkok. <br> <a href="bangkoktips.html" class="intro-text"> <strong><u> Want some ideas?</strong> </u></a></br></p>
+        <p class="intro-text">There’s so much more to see and do in central Bangkok. <br> <a href="bangkoktips.html"
+                class="tile"> <strong><u> Want some ideas?</strong> </u></a></br></p>
 
     </body>
     <div class="section-divider"></div>
