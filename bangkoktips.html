@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangkok Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #faf7f5;
+            color: #333;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #DBA3B1;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-note {
+            font-size: 1.1rem;
+            padding: 2rem 1.5rem;
+            background: #fff;
+            border-radius: 14px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 2.5rem;
+            text-decoration: none;
+            color: #555;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 140px;
+            width: 35vw;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .footer-logo {
+                max-width: 110px;
+            }
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            background: #DBA3B1;
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        .intro-text {
+            max-width: 720px;
+            margin: 0 auto 1.2rem;
+            line-height: 1.7;
+            color: #450011;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #450011;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+        }
+
+        @media (min-width: 700px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .tip-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+        }
+
+        .tip-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.4rem 1.5rem;
+            text-align: left;
+        }
+
+        .tip-card h3 {
+            margin: 0 0 0.4rem;
+            font-size: 1.15rem;
+            color: #DBA3B1;
+        }
+
+        .tip-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        bold-text {
+            color: #450011;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>While You're Here</h1>
+
+    <p class="intro-text">
+        A few of our personal recommendations to help you enjoy Bangkok while you're here 🤍
+    </p>
+
+    <!-- WHERE TO STAY -->
+    <h2 class="section-title">Where to Stay in Central Bangkok</h2>
+    <div class="section-divider"></div>
+
+    <div class="card-grid">
+
+        <div class="tip-card">
+            <img src="images/sathorn.jpg" alt="Hotel near venue">
+            <div class="card-content">
+                <h3>Sathorn</h3>
+                <p>
+                    Sleek by day, lively by night - rooftops, restaurants and river access nearby.
+                    <br><strong>Best for:</strong> Central stays, great food and evening plans. </br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/Asoke.webp" alt="Bangkok city hotel">
+            <div class="card-content">
+                <h3>Asoke - Sukhumvit</h3>
+                <p>
+                    Bright lights, busy streets and a big nightlife scene.
+                    <br><strong>Best for:</strong> Bar-hopping, late nights and guests who enjoy a
+                    party atmosphere.</br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/siam.webp" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>Siam</h3>
+                <p>
+                    Bold, busy and buzzing with shopping and culture.
+                    <br> <strong>Best for:</strong> First-time visitors and soaking up Bangkok’s energy. </br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/ekkamai.jpg" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>Ekkamai - Sukhumvit</h3>
+                <p>
+                    Cool, calm and effortlessly trendy with cafés and hidden gems.
+                    <br> <strong>Best for:</strong> A relaxed vibe, brunch lovers and stylish stays. </br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- GETTING AROUND -->
+    <h2 class="section-title">Getting Around & Good to Know</h2>
+    <div class="section-divider"></div>
+
+    <div class="card-grid">
+        <div class="tip-card">
+            <h3>When in Doubt, Grab</h3>
+            <p>
+                Grab works much like Uber and is the easiest way to get around Bangkok, especially if you’re not
+                familiar with the city. Prices are reasonable, cars are air-conditioned ideal when it’s hot (which is…
+                often). </p>
+        </div>
+
+        <div class="tip-card">
+            <h3>Beat the Traffic: BTS & MRT</h3>
+            <p>
+                Bangkok’s skytrain (BTS) and underground (MRT) are clean, efficient, and often faster than travelling by
+                car during peak hours. They’re a great option for getting around central areas and avoiding traffic
+                altogether. </p>
+        </div>
+
+        <div class="tip-card">
+            <h3>Cash Is Still King (Sometimes)</h3>
+            <p>
+                While many places accept cards, smaller shops, street food stalls, markets, and taxis often prefer cash.
+                Having some Thai Baht on hand will make day-to-day exploring much easier. </p>
+        </div>
+
+        <div class="tip-card">
+            <h3>Tuk Tuks: Cute, But Pricey</h3>
+            <p>
+                They’re fun for a short ride and a photo, but tuk tuks are often overpriced - especially near temples
+                and tourist spots - and scams aren’t uncommon. If you do hop in, agree on the price first.. </p>
+        </div>
+    </div>
+
+    <!-- LITTLE ADVENTURES -->
+    <h2 class="section-title">Little Adventures Nearby</h2>
+    <div class="section-divider"></div>
+
+    <div class="card-grid">
+
+        <div class="tip-card">
+            <img src="images/talatnoi.jpg" alt="Hotel near venue">
+            <div class="card-content">
+                <h3>Songwat Road & Talat Noi</h3>
+                <p>
+                    Old-town charm, with street art, river views and some of the city’s best hidden cafés.
+                    <br><strong>Vibe:</strong> Historic, artsy and quietly cool. </br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/Ayyuthaya.webp" alt="Bangkok city hotel">
+            <div class="card-content">
+                <h3>Ayutthaya</h3>
+                <p>
+                    Ancient temple ruins just outside Bangkok, perfect for a day of exploring.
+                    <br><strong>Vibe:</strong> Cultural, scenic and history-rich.</br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/chinatown.webp" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>Nigh Markets</h3>
+                <p>
+                    Food, shopping and people-watching after dark - Bangkok at its most fun. (A must try - Jodd Fairs
+                    and China Town)
+                    <br> <strong>Vibe:</strong> Lively, casual and full of flavour.</br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/watarun.jpg" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>City Temples</h3>
+                <p>
+                    Beautiful, iconic landmarks scattered throughout the city. (Go for the Big 3! Wat Pho, Wat Arun and
+                    the Grand Palace).
+                    <br> <strong>Vibe:</strong> Peaceful, impressive and culturally immersive. </br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IF YOU HAVE TIME -->
+    <h2 class="section-title">If You Have Time to Wander…</h2>
+    <p class="intro-text">
+        If you’re turning the wedding into a longer adventure, these are a few places we’d happily recommend…
+    </p>
+    <div class="section-divider"></div>
+
+    <div class="card-grid">
+
+        <div class="tip-card">
+            <img src="images/huahin.jpg" alt="Hotel near venue">
+            <div class="card-content">
+                <h3>Hua hin</h3>
+                <p>
+                    A relaxed seaside town with long beaches, great cafés, and a slower pace than the islands. Easy to
+                    reach from Bangkok and ideal if you’re after something calm, coastal, and low-key.
+                    <br><strong>Good to know:</strong> this is more about long walks, beach days, and good food than
+                    nightlife - perfect for switching off. </br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/khaoyai.jpg" alt="Bangkok city hotel">
+            <div class="card-content">
+                <h3>Khao Yai</h3>
+                <p>
+                    Lush countryside, national parks, vineyards, and cooler air - a refreshing contrast to city life. A
+                    lovely option for nature lovers and wine fans.
+                    <br><strong>Good to know:</strong> getting around is easiest with a car, so this one works best if
+                    you’re happy to drive or book a driver.</br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/krabi.jpg" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>Krabi</h3>
+                <p>
+                    Dramatic limestone cliffs, turquoise water, and those iconic island views. A great choice for boat
+                    trips, beaches, and a little adventure mixed with relaxation.
+
+                    <br> <strong>Good to know:</strong> most people stay in Ao Nang, which is lively and convenient -
+                    the main street is very party-focused, so look slightly outside the centre if you’re after a quieter
+                    stay.</br>
+                </p>
+            </div>
+        </div>
+
+        <div class="tip-card">
+            <img src="images/kohchang.jpg" alt="Boutique hotel Bangkok">
+            <div class="card-content">
+                <h3>Koh Chang</h3>
+                <p>
+                    A laid-back island with jungle interiors, waterfalls, and a slower rhythm of life. Ideal if your
+                    idea of a holiday involves barefoot days and early nights.
+                    <br> <strong>Good to know:</strong> things move at a gentler pace here - it’s less about hopping
+                    between attractions and more about settling in and unwinding. </br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <footer>
+        <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+    </footer>
+
+</body>
+
+</html>
