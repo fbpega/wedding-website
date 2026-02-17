@@ -169,6 +169,61 @@
             line-height: 1.6;
             color: #555;
         }
+
+        /* ===== Scroll To Top Button ===== */
+
+        .scroll-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+
+            border: none;
+            cursor: pointer;
+
+            background: #DBA3B1;
+            /* Pink */
+            color: white;
+            font-size: 1.6rem;
+
+            box-shadow: 0 8px 25px rgba(219, 163, 177, 0.45);
+
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            pointer-events: none;
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        /* When visible */
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        /* Hover animation */
+
+        .scroll-top:hover {
+            background: #450011;
+            /* Burgundy */
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(69, 0, 17, 0.45);
+        }
+
+        /* Click effect */
+
+        .scroll-top:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
@@ -393,6 +448,28 @@
         <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
     </footer>
 
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+
+
+    <script>
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        // Show button after scrolling down 300px
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("visible");
+            } else {
+                scrollTopBtn.classList.remove("visible");
+            }
+        });
+
+        // Scroll smoothly to top when clicked
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
 </body>
+
 
 </html>
