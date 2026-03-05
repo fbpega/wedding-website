@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP Dashboard — Vab & Beth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy:   #450011;
+      --blush:      #DBA3B1;
+      --blush-pale: rgba(219,163,177,0.15);
+      --cream:      #faf7f5;
+      --cream-dark: #f0ebe7;
+      --ink:        #2a1a1f;
+      --muted:      #8a7070;
+      --white:      #ffffff;
+      --yes-bg:     rgba(34,139,80,0.1);
+      --yes-text:   #1a6b3c;
+      --no-bg:      rgba(180,40,60,0.1);
+      --no-text:    #8b1a2a;
+      --radius:     14px;
+      --shadow:     0 4px 24px rgba(69,0,17,0.08);
+      --shadow-md:  0 8px 40px rgba(69,0,17,0.12);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .topbar h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .topbar-sub {
+      font-size: 0.8rem;
+      opacity: 0.6;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .refresh-btn {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .refresh-btn:hover { background: rgba(255,255,255,0.22); }
+
+    /* ── Main layout ── */
+    .main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    /* ── Stat cards ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.6rem;
+      box-shadow: var(--shadow);
+      border-top: 3px solid transparent;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .stat-card:nth-child(1) { border-color: var(--blush); animation-delay: 0s; }
+    .stat-card:nth-child(2) { border-color: #228b50;       animation-delay: 0.07s; }
+    .stat-card:nth-child(3) { border-color: #b4283c;       animation-delay: 0.14s; }
+    .stat-card:nth-child(4) { border-color: var(--burgundy); animation-delay: 0.21s; }
+    .stat-card:nth-child(5) { border-color: #b87a30;       animation-delay: 0.28s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.6rem 0.9rem 0.6rem 2.4rem;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus { border-color: var(--blush); }
+
+    .filter-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 9px;
+      border: 1.5px solid var(--cream-dark);
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .filter-btn:hover { border-color: var(--blush); color: var(--burgundy); }
+    .filter-btn.active { background: var(--burgundy); border-color: var(--burgundy); color: var(--white); }
+
+    .export-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 9px;
+      border: 1.5px solid var(--blush);
+      background: var(--blush-pale);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--burgundy);
+      cursor: pointer;
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .export-btn:hover { background: var(--blush); color: var(--white); }
+
+    /* ── Table card ── */
+    .table-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      animation: fadeUp 0.5s ease 0.2s both;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead {
+      background: var(--cream);
+      border-bottom: 2px solid var(--cream-dark);
+    }
+
+    th {
+      padding: 0.9rem 1.1rem;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th:hover { color: var(--burgundy); }
+
+    th .sort-icon { opacity: 0.3; margin-left: 0.3rem; font-size: 0.7rem; }
+    th.sorted .sort-icon { opacity: 1; color: var(--burgundy); }
+
+    td {
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--cream-dark);
+      vertical-align: middle;
+      color: var(--ink);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr {
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: var(--cream); }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .badge-yes {
+      background: var(--yes-bg);
+      color: var(--yes-text);
+    }
+
+    .badge-no {
+      background: var(--no-bg);
+      color: var(--no-text);
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ── Empty / loading state ── */
+    .state-row td {
+      text-align: center;
+      padding: 3.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px; height: 20px;
+      border: 2px solid var(--blush);
+      border-top-color: var(--burgundy);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer count ── */
+    .table-footer {
+      padding: 0.8rem 1.2rem;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dark);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .topbar { padding: 1rem 1.2rem; }
+      .main   { padding: 1.5rem 1rem; }
+      .topbar-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Vab &amp; Beth — RSVP Dashboard</h1>
+      <span class="topbar-sub">March 12, 2027</span>
+    </div>
+    <button class="refresh-btn" onclick="loadRSVPs()">
+      ↻ Refresh
+    </button>
+  </div>
+
+  <div class="main">
+
+    <!-- Stat cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Responses</div>
+        <div class="stat-value" id="stat-total">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Attending</div>
+        <div class="stat-value" id="stat-yes">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Not Attending</div>
+        <div class="stat-value" id="stat-no">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Adults</div>
+        <div class="stat-value" id="stat-adults">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Children</div>
+        <div class="stat-value" id="stat-children">—</div>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input class="search-input" id="searchInput" type="text" placeholder="Search by name, email…" oninput="renderTable()" />
+      </div>
+      <button class="filter-btn active" id="filter-all"  onclick="setFilter('all')">All</button>
+      <button class="filter-btn"        id="filter-yes"  onclick="setFilter('yes')">Attending</button>
+      <button class="filter-btn"        id="filter-no"   onclick="setFilter('no')">Not Attending</button>
+      <button class="export-btn" onclick="exportCSV()">
+        ↓ Export CSV
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+      <div class="table-wrap">
+        <table id="rsvpTable">
+          <thead>
+            <tr>
+              <th onclick="sortBy('email')">Email <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('attending')">Attending <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('names')">Guest Names <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('adults')">Adults <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('children')">Children <span class="sort-icon">↕</span></th>
+              <th>Dietary Requirements</th>
+              <th onclick="sortBy('submitted_at')">Submitted <span class="sort-icon">↕</span></th>
+            </tr>
+          </thead>
+          <tbody id="rsvpBody">
+            <tr class="state-row"><td colspan="7"><span class="spinner"></span> Loading RSVPs…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer">
+        <span id="row-count">—</span>
+        <span id="last-updated">—</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let allData   = [];
+    let activeFilter = 'all';
+    let sortKey   = 'submitted_at';
+    let sortDir   = -1; // -1 = desc, 1 = asc
+
+    // ── Fetch ─────────────────────────────────────────────────────────
+    async function loadRSVPs() {
+      setLoading(true);
+      try {
+        const res = await fetch('https://my-worker.officialourwedding-ph.workers.dev/rsvpvabbeth');
+        if (!res.ok) throw new Error("Failed to fetch RSVPs");
+        allData = await res.json();
+        updateStats();
+        renderTable();
+        document.getElementById('last-updated').textContent =
+          'Last updated: ' + new Date().toLocaleTimeString();
+      } catch (err) {
+        console.error(err);
+        document.getElementById('rsvpBody').innerHTML =
+          `<tr class="state-row"><td colspan="7">⚠️ Could not load RSVPs. Please try refreshing.</td></tr>`;
+      }
+    }
+
+    function setLoading(on) {
+      if (on) document.getElementById('rsvpBody').innerHTML =
+        `<tr class="state-row"><td colspan="7"><span class="spinner"></span> Loading RSVPs…</td></tr>`;
+    }
+
+    // ── Stats ─────────────────────────────────────────────────────────
+    function updateStats() {
+      const yes      = allData.filter(r => r.attending === 'yes');
+      const no       = allData.filter(r => r.attending === 'no');
+      const adults   = yes.reduce((s, r) => s + (parseInt(r.adults)   || 0), 0);
+      const children = yes.reduce((s, r) => s + (parseInt(r.children) || 0), 0);
+
+      document.getElementById('stat-total').textContent    = allData.length;
+      document.getElementById('stat-yes').textContent      = yes.length;
+      document.getElementById('stat-no').textContent       = no.length;
+      document.getElementById('stat-adults').textContent   = adults;
+      document.getElementById('stat-children').textContent = children;
+    }
+
+    // ── Filter ────────────────────────────────────────────────────────
+    function setFilter(f) {
+      activeFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('filter-' + f).classList.add('active');
+      renderTable();
+    }
+
+    // ── Sort ──────────────────────────────────────────────────────────
+    function sortBy(key) {
+      if (sortKey === key) sortDir *= -1;
+      else { sortKey = key; sortDir = 1; }
+
+      document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+      event.currentTarget.classList.add('sorted');
+      renderTable();
+    }
+
+    // ── Render ────────────────────────────────────────────────────────
+    function renderTable() {
+      const query  = document.getElementById('searchInput').value.toLowerCase();
+      const tbody  = document.getElementById('rsvpBody');
+
+      let rows = allData.slice();
+
+      // Filter by attending
+      if (activeFilter !== 'all') rows = rows.filter(r => r.attending === activeFilter);
+
+      // Search
+      if (query) rows = rows.filter(r =>
+        (r.email  || '').toLowerCase().includes(query) ||
+        (r.names  || '').toLowerCase().includes(query) ||
+        (r.dietary_requirements || '').toLowerCase().includes(query)
+      );
+
+      // Sort
+      rows.sort((a, b) => {
+        const av = (a[sortKey] || '').toString().toLowerCase();
+        const bv = (b[sortKey] || '').toString().toLowerCase();
+        return av < bv ? -sortDir : av > bv ? sortDir : 0;
+      });
+
+      document.getElementById('row-count').textContent =
+        rows.length + ' of ' + allData.length + ' responses';
+
+      if (!rows.length) {
+        tbody.innerHTML = `<tr class="state-row"><td colspan="7">No responses found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows.map(r => {
+        const isYes   = r.attending === 'Yes';
+        const badge   = isYes
+          ? `<span class="badge badge-yes">Yes</span>`
+          : `<span class="badge badge-no">No</span>`;
+        const date    = r.submitted_at
+          ? new Date(r.submitted_at).toLocaleString('en-GB', { dateStyle:'medium', timeStyle:'short' })
+          : '—';
+        const dietary = r.dietary_requirements
+          ? escHtml(r.dietary_requirements)
+          : `<span style="color:var(--muted)">None</span>`;
+
+        return `<tr>
+          <td>${escHtml(r.email || '—')}</td>
+          <td>${badge}</td>
+          <td>${escHtml(r.names || '—')}</td>
+          <td>${isYes ? (r.adults   || 0) : '—'}</td>
+          <td>${isYes ? (r.children || 0) : '—'}</td>
+          <td>${isYes ? dietary : '—'}</td>
+          <td style="color:var(--muted); font-size:0.82rem; white-space:nowrap;">${date}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ── Export CSV ────────────────────────────────────────────────────
+    function exportCSV() {
+      const headers = ['Email','Attending','Guest Names','Adults','Children','Dietary Requirements','Submitted At'];
+      const rows = allData.map(r => [
+        r.email, r.attending, r.names, r.adults, r.children,
+        r.dietary_requirements, r.submitted_at
+      ].map(v => `"${(v || '').toString().replace(/"/g, '""')}"`));
+
+      const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+      const a   = document.createElement('a');
+      a.href    = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+      a.download = 'rsvp-vab-and-beth.csv';
+      a.click();
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────
+    function escHtml(s) {
+      return String(s)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────
+    loadRSVPs();
+  </script>
+
+</body>
+</html>
