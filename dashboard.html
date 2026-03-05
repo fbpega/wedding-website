@@ -33,7 +33,6 @@
       min-height: 100vh;
     }
 
-    /* ── Top bar ── */
     .topbar {
       background: var(--burgundy);
       color: var(--white);
@@ -54,7 +53,6 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       font-weight: 600;
-      letter-spacing: 0.01em;
     }
 
     .topbar-sub {
@@ -74,21 +72,16 @@
       font-size: 0.82rem;
       cursor: pointer;
       transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
     }
 
     .refresh-btn:hover { background: rgba(255,255,255,0.22); }
 
-    /* ── Main layout ── */
     .main {
       max-width: 1300px;
       margin: 0 auto;
       padding: 2.5rem 2rem;
     }
 
-    /* ── Stat cards ── */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -105,11 +98,11 @@
       animation: fadeUp 0.5s ease both;
     }
 
-    .stat-card:nth-child(1) { border-color: var(--blush); animation-delay: 0s; }
-    .stat-card:nth-child(2) { border-color: #228b50;       animation-delay: 0.07s; }
-    .stat-card:nth-child(3) { border-color: #b4283c;       animation-delay: 0.14s; }
+    .stat-card:nth-child(1) { border-color: var(--blush);    animation-delay: 0s; }
+    .stat-card:nth-child(2) { border-color: #228b50;         animation-delay: 0.07s; }
+    .stat-card:nth-child(3) { border-color: #b4283c;         animation-delay: 0.14s; }
     .stat-card:nth-child(4) { border-color: var(--burgundy); animation-delay: 0.21s; }
-    .stat-card:nth-child(5) { border-color: #b87a30;       animation-delay: 0.28s; }
+    .stat-card:nth-child(5) { border-color: #b87a30;         animation-delay: 0.28s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
@@ -132,7 +125,6 @@
       line-height: 1;
     }
 
-    /* ── Filter bar ── */
     .filter-bar {
       display: flex;
       align-items: center;
@@ -198,14 +190,10 @@
       color: var(--burgundy);
       cursor: pointer;
       transition: all 0.18s;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
     }
 
     .export-btn:hover { background: var(--blush); color: var(--white); }
 
-    /* ── Table card ── */
     .table-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -214,9 +202,7 @@
       animation: fadeUp 0.5s ease 0.2s both;
     }
 
-    .table-wrap {
-      overflow-x: auto;
-    }
+    .table-wrap { overflow-x: auto; }
 
     table {
       width: 100%;
@@ -243,7 +229,6 @@
     }
 
     th:hover { color: var(--burgundy); }
-
     th .sort-icon { opacity: 0.3; margin-left: 0.3rem; font-size: 0.7rem; }
     th.sorted .sort-icon { opacity: 1; color: var(--burgundy); }
 
@@ -255,14 +240,9 @@
     }
 
     tbody tr:last-child td { border-bottom: none; }
-
-    tbody tr {
-      transition: background 0.15s;
-    }
-
+    tbody tr { transition: background 0.15s; }
     tbody tr:hover { background: var(--cream); }
 
-    /* ── Badges ── */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -273,15 +253,8 @@
       font-weight: 500;
     }
 
-    .badge-yes {
-      background: var(--yes-bg);
-      color: var(--yes-text);
-    }
-
-    .badge-no {
-      background: var(--no-bg);
-      color: var(--no-text);
-    }
+    .badge-yes { background: var(--yes-bg); color: var(--yes-text); }
+    .badge-no  { background: var(--no-bg);  color: var(--no-text);  }
 
     .badge::before {
       content: '';
@@ -290,7 +263,6 @@
       background: currentColor;
     }
 
-    /* ── Empty / loading state ── */
     .state-row td {
       text-align: center;
       padding: 3.5rem;
@@ -311,7 +283,6 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Footer count ── */
     .table-footer {
       padding: 0.8rem 1.2rem;
       background: var(--cream);
@@ -323,7 +294,6 @@
       align-items: center;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 600px) {
       .topbar { padding: 1rem 1.2rem; }
       .main   { padding: 1.5rem 1rem; }
@@ -333,20 +303,16 @@
 </head>
 <body>
 
-  <!-- Top bar -->
   <div class="topbar">
     <div class="topbar-left">
       <h1>Vab &amp; Beth — RSVP Dashboard</h1>
       <span class="topbar-sub">March 12, 2027</span>
     </div>
-    <button class="refresh-btn" onclick="loadRSVPs()">
-      ↻ Refresh
-    </button>
+    <button class="refresh-btn" onclick="loadRSVPs()">↻ Refresh</button>
   </div>
 
   <div class="main">
 
-    <!-- Stat cards -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-label">Total Responses</div>
@@ -370,7 +336,6 @@
       </div>
     </div>
 
-    <!-- Filter bar -->
     <div class="filter-bar">
       <div class="search-wrap">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -378,27 +343,24 @@
         </svg>
         <input class="search-input" id="searchInput" type="text" placeholder="Search by name, email…" oninput="renderTable()" />
       </div>
-      <button class="filter-btn active" id="filter-all"  onclick="setFilter('all')">All</button>
-      <button class="filter-btn"        id="filter-yes"  onclick="setFilter('yes')">Attending</button>
-      <button class="filter-btn"        id="filter-no"   onclick="setFilter('no')">Not Attending</button>
-      <button class="export-btn" onclick="exportCSV()">
-        ↓ Export CSV
-      </button>
+      <button class="filter-btn active" id="filter-all" onclick="setFilter('all')">All</button>
+      <button class="filter-btn"        id="filter-yes" onclick="setFilter('yes')">Attending</button>
+      <button class="filter-btn"        id="filter-no"  onclick="setFilter('no')">Not Attending</button>
+      <button class="export-btn" onclick="exportCSV()">↓ Export CSV</button>
     </div>
 
-    <!-- Table -->
     <div class="table-card">
       <div class="table-wrap">
-        <table id="rsvpTable">
+        <table>
           <thead>
             <tr>
-              <th onclick="sortBy('email')">Email <span class="sort-icon">↕</span></th>
-              <th onclick="sortBy('attending')">Attending <span class="sort-icon">↕</span></th>
-              <th onclick="sortBy('names')">Guest Names <span class="sort-icon">↕</span></th>
-              <th onclick="sortBy('adults')">Adults <span class="sort-icon">↕</span></th>
-              <th onclick="sortBy('children')">Children <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('email', this)">Email <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('attending', this)">Attending <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('names', this)">Guest Names <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('adults', this)">Adults <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('children', this)">Children <span class="sort-icon">↕</span></th>
               <th>Dietary Requirements</th>
-              <th onclick="sortBy('submitted_at')">Submitted <span class="sort-icon">↕</span></th>
+              <th onclick="sortBy('submitted_at', this)">Submitted <span class="sort-icon">↕</span></th>
             </tr>
           </thead>
           <tbody id="rsvpBody">
@@ -415,17 +377,23 @@
   </div>
 
   <script>
-    let allData   = [];
+    let allData      = [];
     let activeFilter = 'all';
-    let sortKey   = 'submitted_at';
-    let sortDir   = -1; // -1 = desc, 1 = asc
+    let sortKey      = 'submitted_at';
+    let sortDir      = -1;
+
+    // Always compare attending as lowercase so 'Yes', 'yes', 'YES' all work
+    function getAttending(r) {
+      return (r.attending || '').toLowerCase().trim();
+    }
 
     // ── Fetch ─────────────────────────────────────────────────────────
     async function loadRSVPs() {
-      setLoading(true);
+      document.getElementById('rsvpBody').innerHTML =
+        `<tr class="state-row"><td colspan="7"><span class="spinner"></span> Loading RSVPs…</td></tr>`;
       try {
         const res = await fetch('https://my-worker.officialourwedding-ph.workers.dev/rsvpvabbeth');
-        if (!res.ok) throw new Error("Failed to fetch RSVPs");
+        if (!res.ok) throw new Error('Failed to fetch');
         allData = await res.json();
         updateStats();
         renderTable();
@@ -438,21 +406,16 @@
       }
     }
 
-    function setLoading(on) {
-      if (on) document.getElementById('rsvpBody').innerHTML =
-        `<tr class="state-row"><td colspan="7"><span class="spinner"></span> Loading RSVPs…</td></tr>`;
-    }
-
     // ── Stats ─────────────────────────────────────────────────────────
     function updateStats() {
-      const yes      = allData.filter(r => r.attending === 'yes');
-      const no       = allData.filter(r => r.attending === 'no');
-      const adults   = yes.reduce((s, r) => s + (parseInt(r.adults)   || 0), 0);
-      const children = yes.reduce((s, r) => s + (parseInt(r.children) || 0), 0);
+      const yesRows  = allData.filter(r => getAttending(r) === 'yes');
+      const noRows   = allData.filter(r => getAttending(r) === 'no');
+      const adults   = yesRows.reduce((s, r) => s + (parseInt(r.adults)   || 0), 0);
+      const children = yesRows.reduce((s, r) => s + (parseInt(r.children) || 0), 0);
 
       document.getElementById('stat-total').textContent    = allData.length;
-      document.getElementById('stat-yes').textContent      = yes.length;
-      document.getElementById('stat-no').textContent       = no.length;
+      document.getElementById('stat-yes').textContent      = yesRows.length;
+      document.getElementById('stat-no').textContent       = noRows.length;
       document.getElementById('stat-adults').textContent   = adults;
       document.getElementById('stat-children').textContent = children;
     }
@@ -466,33 +429,33 @@
     }
 
     // ── Sort ──────────────────────────────────────────────────────────
-    function sortBy(key) {
+    function sortBy(key, thEl) {
       if (sortKey === key) sortDir *= -1;
       else { sortKey = key; sortDir = 1; }
-
       document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
-      event.currentTarget.classList.add('sorted');
+      thEl.classList.add('sorted');
       renderTable();
     }
 
     // ── Render ────────────────────────────────────────────────────────
     function renderTable() {
-      const query  = document.getElementById('searchInput').value.toLowerCase();
-      const tbody  = document.getElementById('rsvpBody');
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const tbody = document.getElementById('rsvpBody');
 
       let rows = allData.slice();
 
-      // Filter by attending
-      if (activeFilter !== 'all') rows = rows.filter(r => r.attending === activeFilter);
+      if (activeFilter !== 'all') {
+        rows = rows.filter(r => getAttending(r) === activeFilter);
+      }
 
-      // Search
-      if (query) rows = rows.filter(r =>
-        (r.email  || '').toLowerCase().includes(query) ||
-        (r.names  || '').toLowerCase().includes(query) ||
-        (r.dietary_requirements || '').toLowerCase().includes(query)
-      );
+      if (query) {
+        rows = rows.filter(r =>
+          (r.email  || '').toLowerCase().includes(query) ||
+          (r.names  || '').toLowerCase().includes(query) ||
+          (r.dietary_requirements || '').toLowerCase().includes(query)
+        );
+      }
 
-      // Sort
       rows.sort((a, b) => {
         const av = (a[sortKey] || '').toString().toLowerCase();
         const bv = (b[sortKey] || '').toString().toLowerCase();
@@ -508,12 +471,12 @@
       }
 
       tbody.innerHTML = rows.map(r => {
-        const isYes   = r.attending === 'Yes';
-        const badge   = isYes
+        const isYes  = getAttending(r) === 'yes';
+        const badge  = isYes
           ? `<span class="badge badge-yes">Yes</span>`
           : `<span class="badge badge-no">No</span>`;
-        const date    = r.submitted_at
-          ? new Date(r.submitted_at).toLocaleString('en-GB', { dateStyle:'medium', timeStyle:'short' })
+        const date   = r.submitted_at
+          ? new Date(r.submitted_at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
           : '—';
         const dietary = r.dietary_requirements
           ? escHtml(r.dietary_requirements)
@@ -526,7 +489,7 @@
           <td>${isYes ? (r.adults   || 0) : '—'}</td>
           <td>${isYes ? (r.children || 0) : '—'}</td>
           <td>${isYes ? dietary : '—'}</td>
-          <td style="color:var(--muted); font-size:0.82rem; white-space:nowrap;">${date}</td>
+          <td style="color:var(--muted);font-size:0.82rem;white-space:nowrap;">${date}</td>
         </tr>`;
       }).join('');
     }
@@ -546,14 +509,12 @@
       a.click();
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────
     function escHtml(s) {
       return String(s)
         .replace(/&/g,'&amp;').replace(/</g,'&lt;')
         .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    // ── Init ──────────────────────────────────────────────────────────
     loadRSVPs();
   </script>
 
