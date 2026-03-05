@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RSVP Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    tr:nth-child(even) { background-color: #fafafa; }
+  </style>
+</head>
+<body>
+  <h1>RSVP Dashboard</h1>
+  <table id="rsvpTable">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Attending</th>
+        <th>Names</th>
+        <th>Adults</th>
+        <th>Children</th>
+        <th>Dietary Requirements</th>
+        <th>Submitted At</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadRSVPs() {
+      try {
+        const res = await fetch('https://my-worker.officialourwedding-ph.workers.dev/rsvpvabbeth');
+        if (!res.ok) throw new Error("Failed to fetch RSVPs");
+        const data = await res.json();
+
+        const tbody = document.querySelector('#rsvpTable tbody');
+        tbody.innerHTML = '';
+
+        data.forEach(rsvp => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${rsvp.email}</td>
+            <td>${rsvp.attending}</td>
+            <td>${rsvp.names}</td>
+            <td>${rsvp.adults}</td>
+            <td>${rsvp.children}</td>
+            <td>${rsvp.dietary_requirements || ''}</td>
+            <td>${rsvp.submitted_at || ''}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (err) {
+        console.error(err);
+        alert("Error loading RSVPs");
+      }
+    }
+
+    loadRSVPs();
+  </script>
+</body>
+</html>
