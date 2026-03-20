@@ -2,441 +2,536 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSVP – Vab & Beth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSVP – Vab & Beth</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #faf7f5;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #faf7f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .page-header {
-      text-align: center;
-      padding: 5rem 1.5rem 2rem;
-    }
+        /* ── Header ── */
+        .page-header {
+            text-align: center;
+            padding: 4rem 1.5rem 2rem;
+        }
 
-    .page-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 3.2rem);
-      color: #DBA3B1;
-      margin: 0 0 0.4rem;
-    }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            color: #DBA3B1;
+            margin: 0 0 0.4rem;
+        }
 
-    .page-header p {
-      color: #888;
-      font-size: 0.95rem;
-      margin: 0;
-    }
+        .page-header p {
+            color: #888;
+            font-size: 0.95rem;
+            margin: 0;
+        }
 
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: #DBA3B1;
-      border-radius: 2px;
-      margin: 1.4rem auto;
-    }
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #DBA3B1;
+            border-radius: 2px;
+            margin: 1.4rem auto;
+        }
 
-    /* ── CARD ── */
-    .card {
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 14px 44px rgba(69,0,17,0.1);
-      max-width: 640px;
-      width: calc(100% - 3rem);
-      margin: 0 auto 3rem;
-      padding: 2.8rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
+        /* ── Card ── */
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(69, 0, 17, 0.09);
+            max-width: 640px;
+            width: calc(100% - 3rem);
+            margin: 0 auto 3rem;
+            padding: 2.8rem 2.5rem;
+        }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #DBA3B1, #450011, #DBA3B1);
-      background-size: 200% 100%;
-      animation: shimmer 3s linear infinite;
-    }
+        @media (max-width: 500px) {
+            .card {
+                padding: 2rem 1.4rem;
+            }
+        }
 
-    @media (max-width: 500px) { .card { padding: 2rem 1.4rem; } }
+        /* ── Fields ── */
+        .field {
+            margin-bottom: 1.6rem;
+            text-align: left;
+        }
 
-    /* ── FIELDS ── */
-    .field { margin-bottom: 1.6rem; text-align: left; }
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #450011;
+            margin-bottom: 0.5rem;
+        }
 
-    label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: #450011;
-      margin-bottom: 0.5rem;
-    }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #e8dada;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            background: #faf7f5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            appearance: none;
+        }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border: 1.5px solid #e8dada;
-      border-radius: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      color: #333;
-      background: #faf7f5;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-      appearance: none;
-    }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #DBA3B1;
+            box-shadow: 0 0 0 3px rgba(219, 163, 177, 0.18);
+        }
 
-    input:focus, textarea:focus, select:focus {
-      border-color: #DBA3B1;
-      box-shadow: 0 0 0 3px rgba(219,163,177,0.2);
-    }
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
 
-    textarea { resize: vertical; min-height: 90px; }
+        /* ── RSVP Toggle ── */
+        .attend-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
 
-    /* ── ATTEND TOGGLE ── */
-    .attend-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
+        .attend-btn {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            border: 1.5px solid #e8dada;
+            background: #faf7f5;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
 
-    .attend-btn {
-      padding: 0.9rem 1rem;
-      border-radius: 10px;
-      border: 1.5px solid #e8dada;
-      background: #faf7f5;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #555;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-align: center;
-    }
-    .attend-btn:hover { border-color: #DBA3B1; }
+        .attend-btn:hover {
+            border-color: #DBA3B1;
+        }
 
-    .attend-btn.selected-yes {
-      background: #DBA3B1;
-      border-color: #DBA3B1;
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(219,163,177,0.4);
-    }
-    .attend-btn.selected-no {
-      background: #450011;
-      border-color: #450011;
-      color: #fff;
-    }
+        .attend-btn.selected-yes {
+            background: #DBA3B1;
+            border-color: #DBA3B1;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(219, 163, 177, 0.4);
+        }
 
-    /* ── GUEST ROWS ── */
-    .guests-row { display: flex; align-items: center; gap: 0.8rem; }
-    .guests-row input { max-width: 90px; text-align: center; }
+        .attend-btn.selected-no {
+            background: #450011;
+            border-color: #450011;
+            color: #fff;
+        }
 
-    /* ── CONDITIONAL ── */
-    .conditional { display: none; }
-    .conditional.visible { display: block; }
+        /* ── Guest rows ── */
+        .guests-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
 
-    /* ── SUBMIT ── */
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      background: #450011;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      margin-top: 0.5rem;
-      letter-spacing: 0.03em;
-    }
-    .submit-btn:hover {
-      background: #DBA3B1;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(219,163,177,0.4);
-    }
-    .submit-btn:active { transform: translateY(0); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .guests-row input {
+            max-width: 90px;
+            text-align: center;
+        }
 
-    /* ── SUCCESS ── */
-    .success-view { display: none; text-align: center; padding: 2rem 0; }
-    .success-view.visible { display: block; }
+        /* ── Hidden fields ── */
+        .conditional {
+            display: none;
+        }
 
-    .success-icon {
-      font-size: 3.2rem;
-      margin-bottom: 1rem;
-      display: block;
-      animation: popIn 0.6s cubic-bezier(0.175,0.885,0.32,1.275) both;
-    }
+        .conditional.visible {
+            display: block;
+        }
 
-    .success-view h2 {
-      font-family: 'Playfair Display', serif;
-      color: #450011;
-      font-size: 1.8rem;
-      margin-bottom: 0.6rem;
-    }
-    .success-view p { color: #666; line-height: 1.7; }
+        /* ── Submit ── */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #450011;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+            letter-spacing: 0.03em;
+        }
 
-    /* ── ERROR ── */
-    .error-msg {
-      display: none;
-      background: #fff0f3;
-      border: 1px solid #f5c0cc;
-      border-radius: 8px;
-      padding: 0.7rem 1rem;
-      color: #c0395a;
-      font-size: 0.9rem;
-      text-align: left;
-      margin-bottom: 1rem;
-    }
-    .error-msg.visible { display: block; }
+        .submit-btn:hover {
+            background: #DBA3B1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(219, 163, 177, 0.4);
+        }
 
-    /* ── BACK LINK ── */
-    .back-link {
-      display: inline-block;
-      text-decoration: none;
-      color: #888;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: #450011; }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-    }
-    .footer-logo {
-      display: block;
-      margin: 0 auto;
-      width: 140px;
-      max-width: 55%;
-    }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-    /* ── SCROLL TOP ── */
-    .scroll-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background: #DBA3B1;
-      color: #fff;
-      font-size: 1.5rem;
-      box-shadow: 0 6px 20px rgba(219,163,177,0.5);
-      opacity: 0;
-      transform: translateY(16px) scale(0.9);
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.3s, background 0.2s;
-    }
-    .scroll-top.visible { opacity: 1; transform: none; pointer-events: auto; }
-    .scroll-top:hover { background: #450011; transform: translateY(-3px) scale(1.05); }
+        /* ── Success state ── */
+        .success-view {
+            display: none;
+            text-align: center;
+            padding: 2rem 0;
+        }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal, .reveal-scale {
-      opacity: 0;
-      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal       { transform: translateY(28px); }
-    .reveal-scale { transform: scale(0.96) translateY(16px); }
-    .reveal.in-view, .reveal-scale.in-view { opacity: 1; transform: none; }
+        .success-view.visible {
+            display: block;
+        }
 
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    @keyframes popIn {
-      from { transform: scale(0); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-  </style>
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-view h2 {
+            font-family: 'Playfair Display', serif;
+            color: #450011;
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .success-view p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ── Error msg ── */
+        .error-msg {
+            display: none;
+            background: #fff0f3;
+            border: 1px solid #f5c0cc;
+            border-radius: 8px;
+            padding: 0.7rem 1rem;
+            color: #b0003a;
+            font-size: 0.88rem;
+            margin-top: 0.8rem;
+            text-align: left;
+        }
+
+        .error-msg.visible {
+            display: block;
+        }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: auto;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: block;
+            margin: 0 auto 1.2rem;
+            width: 140px;
+            max-width: 55%;
+        }
+
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #450011;
+        }
+
+        /* ── Scroll-top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: #DBA3B1;
+            color: #fff;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(219, 163, 177, 0.45);
+            opacity: 0;
+            transform: translateY(16px) scale(0.9);
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s, background 0.2s;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: #450011;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* ── Fade-in animation ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.in-view {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="page-header">
-    <h1 class="reveal">RSVP</h1>
-    <div class="divider reveal" data-delay="0.1s"></div>
-    <p class="reveal" data-delay="0.15s">We're keeping our celebration intimate. Please reply by <strong>June 12, 2026</strong> 💌</p>
-  </div>
-
-  <div class="card reveal-scale" data-delay="0.2s">
-
-    <!-- Form view -->
-    <div id="form-view">
-      <div class="field">
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
-      </div>
-
-      <div class="field">
-        <label>Will you be joining us?</label>
-        <div class="attend-group">
-          <button type="button" class="attend-btn" id="btn-yes" onclick="selectAttend('yes')">
-            🎉 &nbsp;Yes, I'll be there!
-          </button>
-          <button type="button" class="attend-btn" id="btn-no" onclick="selectAttend('no')">
-            😔 &nbsp;Can't make it
-          </button>
-        </div>
-      </div>
-
-      <div class="field conditional" id="names-field">
-        <label>Names of people attending</label>
-        <textarea id="names" placeholder="e.g. Jane Smith, John Smith"></textarea>
-      </div>
-
-      <div class="field conditional" id="guests-field">
-        <label>Number of people attending</label>
-        <div class="guests-row">
-          <input type="number" id="adults" value="1" min="0" max="20" />
-          <span style="color:#888; font-size:0.9rem;">Adult(s)</span>
-        </div>
-        <div class="guests-row" style="margin-top:0.6rem;">
-          <input type="number" id="children" value="0" min="0" max="20" />
-          <span style="color:#888; font-size:0.9rem;">Children</span>
-        </div>
-      </div>
-
-      <div class="field conditional" id="dietary-field">
-        <label>Dietary requirements</label>
-        <textarea id="dietary" placeholder="e.g. vegetarian, gluten-free, nut allergy… or leave blank if none"></textarea>
-      </div>
-
-      <div class="error-msg" id="error-msg"></div>
-
-      <button class="submit-btn" id="submit-btn" onclick="submitRSVP()">
-        Send my RSVP ✉️
-      </button>
+    <div class="page-header fade-up">
+        <h1>RSVP</h1>
+        <div class="divider"></div>
+        <p>We're keeping our celebration intimate. Please reply by <strong>November 12, 2026</strong> 💌</p>
     </div>
 
-    <!-- Success view -->
-    <div class="success-view" id="success-view">
-      <span class="success-icon" id="success-icon">💌</span>
-      <h2 id="success-heading">Thank you!</h2>
-      <p id="success-body">We've received your RSVP and can't wait to celebrate with you.</p>
+    <div class="card fade-up">
+
+        <!-- Form view -->
+        <div id="form-view">
+            <div class="field">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+
+            <div class="field">
+                <label>Will you be joining us?</label>
+                <div class="attend-group">
+                    <button type="button" class="attend-btn" id="btn-yes" onclick="selectAttend('yes')">
+                        Yes
+                    </button>
+                    <button type="button" class="attend-btn" id="btn-no" onclick="selectAttend('no')">
+                        No
+                    </button>
+                </div>
+            </div>
+
+            <!-- Only shown when YES -->
+            <div class="field conditional" id="names-field">
+                <label>Names of people attending</label>
+                <textarea id="names" placeholder="e.g. Jane Smith, John Smith"></textarea>
+            </div>
+
+            <!-- Only shown when YES -->
+            <div class="field conditional" id="guests-field">
+                <label>Number of people attending</label>
+                <div class="guests-row">
+                    <input type="number" id="adults" value="1" min="0" max="20" />
+                    <span style="color:#888; font-size:0.9rem;">Adult(s)</span>
+                </div>
+                <div class="guests-row" style="margin-top:0.6rem;">
+                    <input type="number" id="children" value="0" min="0" max="20" />
+                    <span style="color:#888; font-size:0.9rem;">Children</span>
+                </div>
+            </div>
+
+            <!-- Only shown when YES -->
+            <div class="field conditional" id="dietary-field">
+                <label>Dietary requirements</label>
+                <textarea id="dietary"
+                    placeholder="e.g. vegetarian, gluten-free, nut allergy… or leave blank if none"></textarea>
+            </div>
+
+            <div class="error-msg" id="error-msg">Please fill in all required fields.</div>
+
+            <button class="submit-btn" id="submit-btn" onclick="submitRSVP()">
+                Send my RSVP ✉️
+            </button>
+        </div>
+
+        <!-- Success view -->
+        <div class="success-view" id="success-view">
+            <div class="success-icon" id="success-icon">💌</div>
+            <h2 id="success-heading">Thank you!</h2>
+            <p id="success-body">We've received your RSVP and can't wait to celebrate with you.</p>
+        </div>
+
     </div>
 
-  </div>
+    <div style="text-align:center;">
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
 
-  <div style="text-align:center;">
-    <a href="index.html" class="back-link">← Back to Home</a>
-  </div>
+    <footer>
+        <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
+    </footer>
 
-  <footer>
-    <img src="images/logo.png" class="footer-logo" alt="Vab & Beth logo" />
-  </footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
 
-  <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">↑</button>
+    <script>
+        // ── Attend toggle ──────────────────────────────────────────────
+        let attending = null;
 
-  <script>
-    let attending = null;
+        function selectAttend(choice) {
+            attending = choice;
+            document.getElementById('btn-yes').className = 'attend-btn' + (choice === 'yes' ? ' selected-yes' : '');
+            document.getElementById('btn-no').className = 'attend-btn' + (choice === 'no' ? ' selected-no' : '');
 
-    function selectAttend(choice) {
-      attending = choice;
-      document.getElementById('btn-yes').className = 'attend-btn' + (choice === 'yes' ? ' selected-yes' : '');
-      document.getElementById('btn-no').className  = 'attend-btn' + (choice === 'no'  ? ' selected-no'  : '');
-      const show = (id, v) => document.getElementById(id).classList.toggle('visible', v);
-      show('names-field',   choice === 'yes');
-      show('guests-field',  choice === 'yes');
-      show('dietary-field', choice === 'yes');
-    }
-
-    async function submitRSVP() {
-      const email = document.getElementById('email').value.trim().toLowerCase();
-      const errEl = document.getElementById('error-msg');
-
-      if (!email) {
-        errEl.textContent = 'Please enter your email address.';
-        errEl.classList.add('visible'); return;
-      }
-      if (!attending) {
-        errEl.textContent = "Please let us know if you'll be joining us.";
-        errEl.classList.add('visible'); return;
-      }
-      errEl.classList.remove('visible');
-
-      const btn = document.getElementById('submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      const payload = {
-        email, attending,
-        names:    attending === 'yes' ? document.getElementById('names').value.trim() : '',
-        adults:   attending === 'yes' ? document.getElementById('adults').value : '0',
-        children: attending === 'yes' ? document.getElementById('children').value : '0',
-        dietary_requirements: attending === 'yes' ? document.getElementById('dietary').value.trim() : '',
-        submittedAt: new Date().toISOString()
-      };
-
-      try {
-        const res = await fetch('https://my-worker.officialourwedding-ph.workers.dev/rsvpvabbeth', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!res.ok) throw new Error(await res.text());
-
-        document.getElementById('form-view').style.display = 'none';
-        document.getElementById('success-view').classList.add('visible');
-
-        if (attending === 'yes') {
-          document.getElementById('success-icon').textContent = '🎉';
-          document.getElementById('success-heading').textContent = 'See you there!';
-          document.getElementById('success-body').textContent =
-            "We're so excited to celebrate with you on March 12, 2027. We'll be in touch with more details as the day gets closer! 💕";
-        } else {
-          document.getElementById('success-icon').textContent = '💌';
-          document.getElementById('success-heading').textContent = 'Thank you for letting us know';
-          document.getElementById('success-body').textContent =
-            "We're sorry you won't be able to make it, but we appreciate you letting us know. You'll be missed! 🤍";
+            const show = (id, visible) => document.getElementById(id).classList.toggle('visible', visible);
+            show('names-field', choice === 'yes');
+            show('guests-field', choice === 'yes');
+            show('dietary-field', choice === 'yes');
         }
-      } catch (err) {
-        errEl.textContent = err.message || 'Something went wrong. Please try again.';
-        errEl.classList.add('visible');
-        btn.disabled = false;
-        btn.textContent = 'Send my RSVP ✉️';
-      }
-    }
 
-    // Scroll-to-top
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 300));
-    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        // ── Submit ────────────────────────────────────────────────────
+        async function submitRSVP() {
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const errEl = document.getElementById('error-msg');
+            const names = document.getElementById('names').value.trim().toLowerCase();
 
-    // Scroll reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
-      if (el.dataset.delay) el.style.transitionDelay = el.dataset.delay;
-      io.observe(el);
-    });
-  </script>
+            if (!email) {
+                errEl.textContent = 'Please enter your email address.';
+                errEl.classList.add('visible');
+                return;
+            }
+
+
+            if (!attending) {
+                errEl.textContent = "Please let us know if you'll be joining us.";
+                errEl.classList.add('visible');
+                return;
+            }
+
+            if ((attending !== 'no') && !names) {
+                errEl.textContent = 'Please enter guest name/s.';
+                errEl.classList.add('visible');
+                return;
+            }
+
+            errEl.classList.remove('visible');
+
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+
+            const payload = {
+                email,
+                attending,
+                names: attending === 'yes' ? document.getElementById('names').value.trim() : '',
+                adults: attending === 'yes' ? document.getElementById('adults').value : '0',
+                children: attending === 'yes' ? document.getElementById('children').value : '0',
+                dietary_requirements: attending === 'yes' ? document.getElementById('dietary').value.trim() : '',
+                submittedAt: new Date().toISOString()
+            };
+
+            try {
+                const res = await fetch('https://my-worker.officialourwedding-ph.workers.dev/rsvpvabbeth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const text = await res.text();   // get the Worker’s message
+                    throw new Error(text);
+                }
+
+                // ✅ Success view toggle only if 200
+                document.getElementById('form-view').style.display = 'none';
+                const sv = document.getElementById('success-view');
+                sv.classList.add('visible');
+
+                if (attending === 'yes') {
+                    document.getElementById('success-icon').textContent = '🎉';
+                    document.getElementById('success-heading').textContent = 'See you there!';
+                    document.getElementById('success-body').textContent =
+                        "We're so excited to celebrate with you on March 12, 2027. We'll be in touch with more details as the day gets closer! 💕";
+                } else {
+                    document.getElementById('success-icon').textContent = '💌';
+                    document.getElementById('success-heading').textContent = 'Thank you for letting us know';
+                    document.getElementById('success-body').textContent =
+                        "We're sorry you won't be able to make it, but we appreciate you letting us know. You'll be missed! 🤍";
+                }
+
+            } catch (err) {
+                errEl.textContent = err.message || 'Something went wrong. Please try again.';
+                errEl.classList.add('visible');
+
+                btn.disabled = false;
+                btn.textContent = 'Send my RSVP ✉️';
+            }
+        }
+
+
+        // ── Scroll-to-top ─────────────────────────────────────────────
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ── Scroll reveal ─────────────────────────────────────────────
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up').forEach((el, i) => {
+            el.style.transitionDelay = (i * 0.12) + 's';
+            observer.observe(el);
+        });
+    </script>
 
 </body>
+
 </html>

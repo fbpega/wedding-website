@@ -251,6 +251,52 @@
         .scroll-top:active {
             transform: scale(0.95);
         }
+
+        /* ── TIPS BANNER ── */
+        .tips-banner {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            background: rgba(219, 163, 177, 0.12);
+            border: 1.5px solid rgba(219, 163, 177, 0.4);
+            border-radius: 14px;
+            padding: 1.2rem 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.1rem;
+            flex-wrap: wrap;
+        }
+
+        .tips-banner p {
+            margin: 0;
+            color: #450011;
+            font-size: 0.95rem;
+        }
+
+        .tips-link {
+            display: inline-block;
+            padding: 0.6rem 1.3rem;
+            background: #450011;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .tips-link:hover {
+            background: #DBA3B1;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+
+            .tips-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -272,8 +318,13 @@
 
         </p></strong>
 
-        <p class="intro-text">There’s so much more to see and do in central Bangkok. <br> <a href="bangkoktips.html"
-                class="tile"> <strong><u> Want some ideas?</strong> </u></a></br></p>
+        <p class="intro-text">There’s so much more to see and do in central Bangkok.</p>
+
+
+        <div class="tips-banner reveal" data-delay="0.25s">
+            <p>🌆 Want some ideas for exploring Bangkok while you're here?</p>
+            <a href="bangkoktips.html" class="tips-link">Our Bangkok Tips →</a>
+        </div>
 
     </body>
     <div class="section-divider"></div>
